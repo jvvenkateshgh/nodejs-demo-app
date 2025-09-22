@@ -1,1 +1,21 @@
+name: CICD
+
+on:
+  push:
+    branches: [cicd-docker-ec2]
+
+jobs:
+  build:
+    steps:
+      - name: checkout source
+      - uses: action/checkout@v3
+      - name: login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: docker build -t jvvenkateshdh/nodejs-demo-app .
+      - name: publish image to docker hub
+        run: docker push jvvenkateshdh/nodejs-demo-app:latest
+
+deploy:
+  needs: build
+  runs-on:
 
