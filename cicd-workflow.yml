@@ -22,9 +22,9 @@ deploy:
     - name: pull image from docker hub
       run: docker pull jvvenkateshdh/nodejs-demo-app:latest
     - name: delete old container
-      run: docker rm -f nodejs-app-container
+      run: docker rm -f nodejs-demo-app-container
     - name: Run docker container
-      run: docker run -d -p 5000:5000 -name nodejs-app-container jvvenkateshdh/nodejs-demo-app
+      run: docker run -d -p 5000:5000 -name nodejs-demo-app-container jvvenkateshdh/nodejs-demo-app
 
 
   
